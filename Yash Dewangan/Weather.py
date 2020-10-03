@@ -6,12 +6,16 @@ app = Flask(__name__)
 
 
 
-url='http://api.openweathermap.org/data/2.5/weather?q={}&appid=<ENTER_YOUR_API_KEY>' #
+url='http://api.openweathermap.org/data/2.5/weather?q={}&appid=<YOUR_API_KEY' #
 
 
 
 @app.route('/',methods=['GET', 'POST'])
 def index():
+   return render_template("index.html")
+
+@app.route('/city',methods=['GET', 'POST'])
+def searchcity():
    CITY=request.form.get('city')
    r = requests.get(url.format(CITY)).json()
    print(CITY)
@@ -25,7 +29,7 @@ def index():
             
         }
    #return render_template("result.html",)
-   return render_template("index.html",weather=weather)
+   return render_template("next.html",weather=weather)
 
 """@app.route('/show',methods=['GET', 'POST'])
 def result():"""
