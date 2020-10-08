@@ -6,9 +6,14 @@ app = Flask(__name__)
 
 
 
+
 url='http://api.openweathermap.org/data/2.5/weather?q={}&appid=<YOUR_API_KEY>' #
 
 urlforecast='http://api.openweathermap.org/data/2.5/forecast?q={}&appid=<YOUR_API_KEY>'
+
+
+
+
 
 @app.route('/',methods=['GET', 'POST'])
 def index():
@@ -30,6 +35,7 @@ def searchcity():
         }
    #return render_template("result.html",)
    return render_template("next.html",weather=weather)
+
 
 @app.route('/forecast',methods=['GET', 'POST'])
 def forecastcity():
@@ -397,6 +403,7 @@ def searchcityforecast():
    #return render_template("result.html",)
    print(rforecast['list'][38]['dt_txt'])
    return render_template("show.html",weatherforecast=weatherforecast)
+
 
   
 
